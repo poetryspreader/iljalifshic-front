@@ -4,16 +4,18 @@
       :grabCursor="true"
       :centeredSlides="true"
       :slidesPerView="3"
+      :slideToClickedSlide="true"
+      :loop="true"
       :coverflowEffect="{
       rotate: 10,
       stretch: 0,
-      depth: 100,
+      depth: 1,
       modifier: 3,
       slideShadows: false,
     }"
       :pagination="false"
       :modules="modules"
-      class="mySwiper"
+      class="swiper"
   >
     <swiper-slide
         v-for="(song) in songs"
@@ -80,34 +82,10 @@
   }
 </script>
 <style lang="scss">
-.carousel-wrapper {
-  position: relative;
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-  will-change: transform;
-  overflow-x: hidden;
+.swiper {
+  width: 1200px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
-.control-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  height: inherit;
-  opacity: 0.2;
-  width: 50px;
-  z-index: 5;
-  &__icon {
-    transform: scale(1.5);
-  }
-}
-
-.prev {
-  position: absolute;
-  left: 0;
-}
-
-.next {
-  position: absolute;
-  right: 0;
-}
 </style>

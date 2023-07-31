@@ -1,5 +1,5 @@
 <template>
-  <div class="song-card" @click="playPause">
+  <div class="song-card">
     <div class="song-card__title">{{ song.title }}</div>
     <div class="song-card__artist">Artist: {{ song.artist }}</div>
     <img
