@@ -54,13 +54,12 @@ export default {
   },
   methods: {
     playPause() {
-      const audio = this.$refs.audioPlayer;
-      this.isPlaying ? audio.pause() : audio.play();
-      this.isPlaying = !this.isPlaying;
+      this.$refs.audioPlayer.paused ? this.$refs.audioPlayer.play() : this.$refs.audioPlayer.pause();
+      this.isPlaying = !this.$refs.audioPlayer.paused;
+      this.$emit("play", this.$refs.audioPlayer);
     },
     updateCurrentTime(event) {
       const audio = event.target;
-
       this.currentTime = `${
         Math.floor(audio.currentTime / 60)
       }:${
@@ -75,10 +74,9 @@ export default {
 <style lang="scss">
 .song-card {
   cursor: pointer;
-  margin: 10px;
-  //width: 400px;
-  background-color: black;
-  padding: 20px;
+  margin: 22px;
+  background-color: #181818;
+  padding: 25px;
   border-radius: 25px;
   transition: transform 0.3s ease-in-out;;
   &:hover {
@@ -88,6 +86,7 @@ export default {
     font-size: 2rem;
     line-height: 1;
     font-weight: bold;
+    color: white;
   }
   &__image {
     margin-top: 10px;
@@ -118,5 +117,12 @@ export default {
 .play-pause-btn {
   color: white;
   opacity: 0.6;
+}
+
+@media (max-width: 1300px) {
+  .song-card {
+    margin: 16px;
+    width: 270px;
+  }
 }
 </style>

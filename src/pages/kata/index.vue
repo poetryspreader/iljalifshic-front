@@ -1,27 +1,32 @@
 <template>
-  <button class="a"> <h1>nenavizhu</h1>
-  </button>
-  <button class="b"> <h2>aiti</h2>
-  </button>
-  <button class="a"></button>
+  <div v-for="index in 2" class="line">
+    <div v-for="index in 5" class="line__horizontal-stick"></div>
+  </div>
 </template>
 
-<style>
-.a {
-  height: 300px;
-  width: 250px;
-  color: darkorange;
-  background-color: #769d9e;
-
+<style lang="scss">
+.line {
+  height: 50px;
+  margin-bottom: 20px;
+  &__horizontal-stick {
+    margin-bottom: 8px;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    opacity: 0.5;
+  }
 }
-.b {
-  height: 270px;
-  width: 300px;
-  color: darkturquoise;
-  background-color: darkorange;
-}
-
 
 </style>
-<script setup lang="ts">
+<script>
+export default {
+  data() {
+    return {
+      numberOfTacts: 4
+    }
+  }
+}
+
+
 </script>
+

@@ -6,6 +6,7 @@
       :slidesPerView="3"
       :slideToClickedSlide="true"
       :loop="true"
+      :spaceBetween="40"
       :coverflowEffect="{
       rotate: 10,
       stretch: 0,
@@ -19,9 +20,11 @@
   >
     <swiper-slide
         v-for="(song) in songs"
-        :key="song.title">
+        :key="song.title"
+    >
       <SongCard
           :song="song"
+          @play="playSong"
       />
     </swiper-slide>
   </swiper>
@@ -75,17 +78,42 @@
             artist: 'GONE.Fludd',
             song: 'GoneFludd-Пустота.mp3',
             image: 'GoneFludd-Пустота.jpg'
+          },
+          {
+            title: 'MOUNT',
+            artist: 'The Blaze',
+            song: 'TheBlaze-Mount.mp3',
+            image: 'TheBlaze-Mount.png'
+          },
+          {
+            title: 'MOUNT',
+            artist: 'The Blaze',
+            song: 'TheBlaze-Mount.mp3',
+            image: 'TheBlaze-Mount.png'
           }
-        ]
+        ],
+        currentSong: null
       }
+    },
+    methods: {
+      playSong(currentSong) {
+        console.log(currentSong);
+        if (this.currentSong !== null) {
+          this.currentSong.pause();
+        }
+        this.currentSong = currentSong;
+      },
     }
   }
 </script>
 <style lang="scss">
 .swiper {
-  width: 1200px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  margin-top: 30px;
+  max-width: 1200px;
 }
-
+@media (max-width: 1300px) {
+  .swiper {
+    max-width: 1000px;
+  }
+}
 </style>
